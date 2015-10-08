@@ -72,8 +72,8 @@ def globalAlignmentSearch(S, T):
 
 
 ###########################################
-s = "AAAGGTAACGTACAT"
-t = "ATCAATCGCGACGAG"
+s = "AAAGGTAACGAGCTG"
+t = "ATCAATCGCGCGTCA"
 t0 = time.clock()
 optimalScore = globalAlignmentSearch(s, t)
 print("Global alignment score via search: " + str(optimalScore))
