@@ -1,3 +1,4 @@
+Sequence Size	Global Alignment	Local Alignment
 5	-9	10
 10	6	15
 15	-21	21
