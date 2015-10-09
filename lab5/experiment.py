@@ -7,19 +7,19 @@
 ####################################################################
 
 import globalAlignment, random
-import localAlignment   ## comment out once you have this module working
+import localAlignment 
 
-# this is how you call code defined in other files: modulename.functionname
-# note that importing globalAlignment above will run the script in its
-# entirety, so you may want to comment out any testing code at the bottom
-# of that script, so it is not executed prior to the code below
-s = "AGAAAAAAAACTA"
-t = "TGCATCAAAG"
-optimalScore = globalAlignment.globalAlignmentScore(s, t)
-print ("Global alignment score: " + str(optimalScore))
+# s = "AGAAAAAAAACTA"
+# t = "TGCATCAAAG"
 
-# generates randomly composed DNA sequences (25%A, 25%C, 25%T, 25%G)
-# of length N and returns it as a string
+# optimalScore = globalAlignment.globalAlignmentScore(s, t)
+# print ("Global alignment score: " + str(optimalScore))
+
+
+######################################################################
+# randomSeq - generates randomly composed DNA sequences 
+# (25%A, 25%C, 25%T, 25%G) of length N and returns it as a string
+######################################################################
 def randomSeq(N):
     seq = ""
     for i in range(0, N):
@@ -34,7 +34,8 @@ def randomSeq(N):
             seq += "G"
     return seq
 
-# runs the following experiment:
+######################################################################
+# experiment - runs the following experiment:
 # From size Start to Stop going by Step:
 #     Generate 2 random DNA strings of length size
 #     Calculate the global alignment score between the two strings
@@ -46,6 +47,7 @@ def randomSeq(N):
 #     global alignment score, and 10 is the optimal local alignment
 #     score. Put a newline after each line and separate values per line
 #     by tabs. This output file will be used for graphing.
+######################################################################
 def experiment(Start, Stop, Step, Filename):
     with open(Filename, 'w') as out:
         for size in range(Start, Stop, Step):
@@ -56,9 +58,13 @@ def experiment(Start, Stop, Step, Filename):
             out.write("%d\t%d\t%d\n" % (size, g, l))
     return
 
-# Before running this experiment, be sure that you comment out the
-# align function call in globalAlignmentScore, so that files are
-# not written with the alignments
+
+### End of functions ###################################
+
+
+###################################################
+### Testing #######################################
+###################################################
 
 # run experiment
 experiment(5, 100, 5, "expOutput.txt")
