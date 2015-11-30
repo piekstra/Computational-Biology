@@ -1,0 +1,188 @@
+
+  Gibbs Motif Sampler Results
+
+</cgi-bin/gibbs.12.pl?data_type=DNA&layout=&restore=/tmp/gibbs14432/select.txt>
+Reload the Gibbs entry form.
+
+/tmp/gibbs14432/Gibbs14432 /tmp/gibbs14432/data.txt 13 1 -n -W 0.8 -w 0.1 -p 50 -j 5 -i 500 -S 20 -C 0.5 -B /tmp/gibbs14432/data.txt_info-det -y -nopt -o /tmp/gibbs14432/outfile.txt 
+
+
+Gibbs 3.10.001  Sep  8 2009
+Data file: /tmp/gibbs14432/data.txt
+Output file: /tmp/gibbs14432/outfile.txt
+Background Composition Model file: /tmp/gibbs14432/data.txt_info-det
+Current directory: /tmp/gibbs14432
+The following options are set:
+Concentrated Region          False    Sequence type        False
+Collapsed Alphabet           False    Pseudocount weight   True 
+Use Expectation/Maximization False    Don't Xnu sequence   False
+Help flag                    False    Near optimal cutoff  True 
+Number of iterations         True     Don't fragment       False
+Don't use map maximization   False    Repeat regions       False
+Output file                  True     Informed priors file False
+Plateau periods              True     palindromic sequence False
+Don't Reverse complement     False    Number of seeds      True 
+Seed Value                   False    Pseudosite weight    True 
+Suboptimal sampler output    False    Overlap              False
+Allow width to vary          False    Wilcoxon signed rank False
+Sample along length          False    Output Scan File     False
+Output prior file            False    Modular Sampler      False
+Ignore Spacing Model         False    Sample Background    False
+Bkgnd Comp Model             True     Init from prior      False
+Homologous Seq pairs         False    Parallel Tempering   False
+Group Sampler                False    No progress info     False
+Fragment from middle         False    Verify Mode          False
+Alternate sample on k        False    No freq. soln.       True 
+Calc. def. pseudo wt.        False    Motif/Recur smpl     False
+Phylogenetic Sampling        False    Supress Near Opt.    True 
+Nearopt display cutoff       False    Sample model         False
+Hierarchical Model           False    Centroid model       False
+Print Bayesian Counts        False    Align Centroid       False
+Calculate Credibility Limits False    Frequency Bkgnd.     False
+
+site_samp            =            0
+nMotifLen            =           13
+nAlphaLen            =            4
+nNumMotifs           =            1
+dPseudoCntWt         =          0.1
+dPseudoSiteWt        =          0.8
+nMaxIterations       =          500
+lSeedVal             =   1448141482
+nPlateauPeriods      =           50
+nSeeds               =           20
+nNumMotifTypes       =            1
+dCutoff              =          0.5
+dNearOptDispCutoff   =          0.5
+RevComplement        =            1
+glOverlapParam       =            0
+Rcutoff factor       =            0
+Post Plateau Samples =            0
+Frag/Shft Per.       =            5
+Frag width           =           19
+
+
+Sequences to be Searched:
+_________________________
+#1   YAL022C 415 bp YAL022C FUN26 1-1554 predicted membrane prot
+#2   YAL040C 500 bp YAL040C cln3 1-1743 G(sub)1 cyclin
+#3   YAR018C 500 bp YAR018C KIN3 1-1308 protein kinase
+#4   YBR092C 446 bp YBR092C PHO3 1-1404 Acid phosphatase, consti
+#5   YBR138C_YBR139W 327 bp YBR138C HDR1 1-1575 Unknown YBR139W 
+#6   YBR200W 500 bp YBR200W BEM1 1-1656 contains two SH3 domains
+#7   YBR202W 500 bp YBR202W CDC47 1-2538 MCM3 protein homolog (S
+#8   YCR042C 500 bp YCR042C TSM1 1-4224 TATA binding protein-ass
+#9   YCR043C 250 bp YCR043C  1-384 
+#10  YEL025C 500 bp YEL025C  1-3567 
+#11  YEL032W 251 bp YEL032W mcm3 1-2916 component of DNA replica
+#12  YER139C_YER140W 321 bp YER139C  1-681  YER140W  1-1671 
+#13  YGL021W 250 bp YGL021W ALK1 1-2283 DNA damage-responsive pr
+#14  YGL116W 496 bp YGL116W cdc20 1-1833 beta-transducin homolog
+#15  YGL201C 500 bp YGL201C MCM6 1-3054 component of MCM initiat
+#16  YGR092W 363 bp YGR092W dbf2 1-1719 Serine\/threonine protei
+#17  YGR143W 500 bp YGR143W skn1 1-2316 encodes a predicted type
+#18  YGR229C_YGR230W 994 bp YGR229C SMI1 1-1518 57 kDa nuclear p
+#19  YHL026C_YHL025W 824 bp YHL026C  1-807  YHL025W SNF6 1-999 s
+#20  YHL029C_YHL028W 794 bp YHL029C  1-2040  YHL028W WSC4 1-1818
+Processed Sequence Length: 9731 Total sequence length: 9731
+
+
+
+
+
+
+
+
+
+
+======================================================================
+======================== MAP MAXIMIZATION RESULTS ====================
+======================================================================
+
+-------------------------------------------------------------------------
+                          MOTIF a
+
+
+
+
+
+Motif model (residue frequency x 100)
+____________________________________________
+Pos. #     a   t   c   g  Info
+_____________________________
+   1 |    .  100  .   .   1.5
+   2 |    25  75  .   .   0.7
+   3 |    .  100  .   .   1.5
+   4 |    .   .  100  .   2.3
+   5 |    .   .  100  .   2.3
+   6 |    .  100  .   .   1.5
+   7 |   100  .   .   .   1.5
+   8 |   100  .   .   .   1.5
+   9 |   100  .   .   .   1.5
+  10 |   100  .   .   .   1.5
+  11 |   100  .   .   .   1.5
+  12 |    .   25  .   75  1.4
+  13 |    .   .   .  100  2.3
+
+nonsite   32  32  17  17
+site      40  30  15  13
+
+Motif probability model
+____________________________________________
+Pos. #    a     t     c     g   
+____________________________________________
+   1 |  0.008 0.983 0.004 0.004 
+   2 |  0.252 0.740 0.004 0.004 
+   3 |  0.008 0.983 0.004 0.004 
+   4 |  0.008 0.008 0.980 0.004 
+   5 |  0.008 0.008 0.980 0.004 
+   6 |  0.008 0.983 0.004 0.004 
+   7 |  0.984 0.008 0.004 0.004 
+   8 |  0.984 0.008 0.004 0.004 
+   9 |  0.984 0.008 0.004 0.004 
+  10 |  0.984 0.008 0.004 0.004 
+  11 |  0.984 0.008 0.004 0.004 
+  12 |  0.008 0.252 0.004 0.736 
+  13 |  0.008 0.008 0.004 0.980 
+
+
+
+Background probability model
+        0.327 0.323 0.176 0.174 
+
+
+
+13 columns
+Num Motifs: 4
+   5,  1     169 ggaaa TTTCCTAAAAATG gccga     181   0.92 F YBR138C_YBR139W 327 bp YBR138C HDR1 1-1575 Unknown
+  15,  1     338 gcgct TTTCCTAAAAAGG aaatt     326   1.00 R YGL201C 500 bp YGL201C MCM6 1-3054 component of MC
+  16,  1     130 ttaca TTTCCTAAAAAGG gcatc     118   1.00 R YGR092W 363 bp YGR092W dbf2 1-1719 Serine\/threoni
+  18,  1     604 tagac TATCCTAAAAAGG aatgt     616   0.96 F YGR229C_YGR230W 994 bp YGR229C SMI1 1-1518 57 kDa 
+                       *************
+
+
+Column 1 :  Sequence Number, Site Number
+Column 2 :  Left End Location
+Column 4 :  Motif Element
+Column 6 :  Right End Location
+Column 7 :  Probability of Element
+Column 8 :  Forward Motif (F) or Reverse Complement (R) 
+Column 9 :  Sequence Description from Fast A input
+
+Log Motif portion of MAP for motif a = -27.78683
+Log Fragmentation portion of MAP for motif a = -0.00000
+
+
+Log Background portion of Map = -13027.59642
+Log Alignment portion of Map = -37.22883
+Log Site/seq portion of Map = 0.00000
+Log Null Map = -13097.57501
+Log Map = 4.96294
+
+
+log MAP = sum of motif and fragmentation parts of MAP + background + alignment + sites/seq - Null
+
+Frequency Map = 4.962936
+Nearopt Map   = 4.962936
+Maximal Map   = 4.962936
+Elapsed time: 25.160000 secs
+

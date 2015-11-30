@@ -1,0 +1,5 @@
+GG:	0
+GT:	0
+GC:	0
+GA:	2
+Total dinuc: 20

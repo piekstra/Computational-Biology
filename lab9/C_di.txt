@@ -1,0 +1,5 @@
+CA:	1
+CC:	0
+CT:	2
+CG:	0
+Total dinuc: 20

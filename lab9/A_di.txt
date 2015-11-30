@@ -1,0 +1,5 @@
+AC:	3
+AT:	2
+AA:	3
+AG:	1
+Total dinuc: 20

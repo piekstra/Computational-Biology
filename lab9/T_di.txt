@@ -1,0 +1,5 @@
+TC:	0
+TT:	3
+TG:	1
+TA:	2
+Total dinuc: 20
