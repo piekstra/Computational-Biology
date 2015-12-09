@@ -5,11 +5,12 @@ class CSVReader:
             for lineNo, line in enumerate(csv):
                 if lineNo == 0:
                     if verbose:
-                        print filter(None, line.rstrip().split(','))
+                        print (filter(None, line.rstrip().split(',')))
                 else:
                     gene = line.rstrip().split(',')[1:]
-                    if verbose: print gene
-                    microArrayData.append(map(int, gene))
+                    if verbose: 
+                        print (gene)
+                    microArrayData.append(list(map(int, gene)))
         return microArrayData
 
 if __name__ == "__main__":         

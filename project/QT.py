@@ -12,7 +12,7 @@ import math
 #########################################################################
 class QT:
 
-    def __init__(self, verbose):
+    def __init__(self, verbose=False):
         self.verbose = verbose
         self.divider = "================================================================"
 
@@ -87,7 +87,7 @@ class QT:
             setS = self.removeClusteredGenes(setS, biggestCluster)
 
         # return the final clusters
-        return finalClusters
+        return [sorted(cluster) for cluster in finalClusters]
 
 
     #########################################################################

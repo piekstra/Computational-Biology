@@ -47,18 +47,19 @@ class KMeans:
         # get the length of the cluster
         listLen = float(len(cluster))
         # return a list containing the center of the cluster
-        return [sum(exp)/listLen for exp in zip(*cluster)]
+        return [sum(exp)/listLen for exp in list(zip(*cluster))]
     
     
     ##    
     # sqDist
     #
-    # Description:
+    # Description: Given two genes, calculates
+    #   the square distance between them
     #
     # Parameters:
-    #
     #   self - the object pointer
-    #   initial - 
+    #   initial - The source gene
+    #   dest - The destination gene
     #
     # Returns:
     #   The square distance between the initial gene and dest
@@ -82,13 +83,17 @@ class KMeans:
     ##    
     # newClusters
     #
-    # Description:
+    # Description: Creates a new empty cluster list
+    #   of a certain size
     #
     # Parameters:
+    #   self - The object pointer
+    #   len - The number of clusters
     #
     # Returns:
+    #   An emtpy 2D list with len inner lists
     #
-    def newClusters(self, len=None):
+    def newClusters(self, len):
         return [[] for _ in range(len)]
         
 
@@ -98,21 +103,29 @@ class KMeans:
     # Description: Thickens
     #
     # Parameters:
+    #   self - The object pointer
+    #   clusters - Gene clusters
+    #   figure - The figure number
     #
-    # Returns:
-    #
-    def plot(self, clusters, figure):
+    def plot(self, clusters, figureNum):
         # only allow plotting of clusters with
         # genes with 2 expressions (2D graph)
         if self.numExps != 2:
             return
+        
         # remove the gene label from each gene
         refinedClusters = [[gene[0] for gene in cluster] for cluster in clusters]
+        
         # modify clusters to have all x's in one tuple and all
         # y's in the other tuple (seperate exp1 and exp2)
         xyClusters = [list(zip(*cluster)) for cluster in refinedClusters]
+        
+        # get a unique set of colors to use for the clusters
         clusterColors = colors.cnames.values()[:len(xyClusters)]
-        plt.figure(figure)
+        
+        # create a new figure
+        plt.figure(figureNum)
+        # create a scatter-plot for the figure
         for idx, cluster in enumerate(xyClusters):
             plt.scatter(cluster[0], cluster[1], color=clusterColors[idx])
         
@@ -121,10 +134,17 @@ class KMeans:
     # kmeans
     #
     # Description: 
+    #   Runs the K-Means clustering algorithm on microarray
+    #   data.
     #
     # Parameters:
+    #   self - The object pointer
+    #   mdata - The microarray data
+    #   k - The k-value of the clustering algorithm 
+    #       (max potential clusters)
     #
     # Returns:
+    #   The final cluster assignment
     #        
     def kmeans (self, mdata, k):
         # the number of genes in the microarray
@@ -132,34 +152,40 @@ class KMeans:
         # the number of expressions per gene
         numExps = len(mdata[0])
         
-        # 
         if self.verbose:
-            print "K-means Clustering:\n\tk = %d\n\tnum genes: %d\n\tnum expressions: %d" % (k, numGenes, numExps)
-            
+            print ("K-means Clustering:\n\tk = %d\n\tnum genes: %d\n\tnum expressions: %d" % (k, numGenes, numExps))
+        
+        # create a new empty list of clusters
         clusters = self.newClusters(k)
-        # for each item, randomly assign it to one of the k clusters
+        
+        # randomly assign each gene in the microarray data to one of the k clusters
         for geneIdx, gene in enumerate(mdata):
             clusters[random.randint(0,k-1)].append((gene, geneIdx))
+            
         # remove any empty clusters
-        clusters = filter(None, clusters)
+        clusters = list(filter(None, clusters))
+        
+        # keeps track of the number of cluster arrangements
         counter = 0
+        
+        # the algorithm runs until the cluster assignments stop change
         while True:
             counter += 1
             if numExps == 2:
                 self.plot(clusters, counter)
             newClusters = self.newClusters(len(clusters))
-            centers = [self.center(zip(*cluster)[0]) for cluster in clusters]
+            centers = [self.center(list(zip(*cluster))[0]) for cluster in clusters]
             if self.verbose:
-                print "\ncluster arrangement %d:" % (counter)
-                print "Gene%s\t%s\t cluster assignment" % (' '.join(['  ' for _ in range(2,numExps)]), '\t'.join(["sq dist to center C%d" % i for i in range(1, len(centers)+1)]))
+                print ("\ncluster arrangement %d:" % (counter))
+                print ("Gene%s\t%s\t cluster assignment" % (' '.join(['  ' for _ in range(2,numExps)]), '\t'.join(["sq dist to center C%d" % i for i in range(1, len(centers)+1)])))
             for geneIdx, gene in enumerate(mdata):
                 distancesToCenters = [self.sqDist(gene, center) for center in centers]
-                assignedClusterIdx = min(xrange(len(distancesToCenters)), key=distancesToCenters.__getitem__)
+                assignedClusterIdx = min(range(len(distancesToCenters)), key=distancesToCenters.__getitem__)
                 newClusters[assignedClusterIdx].append((gene, geneIdx))
                 if self.verbose:
-                    print "%s\t%s\t\t\t %s" % (gene, '\t\t\t'.join(["%0.2f" % dist for dist in distancesToCenters]), ("C%d" % (assignedClusterIdx+1)))
+                    print ("%s\t%s\t\t\t %s" % (gene, '\t\t\t'.join(["%0.2f" % dist for dist in distancesToCenters]), ("C%d" % (assignedClusterIdx+1))))
             # remove any empty clusters
-            newClusters = filter(None, newClusters)
+            newClusters = list(filter(None, newClusters))
             if newClusters == clusters:
                 return clusters
             else:
@@ -189,9 +215,9 @@ if __name__ == "__main__":
     finalClusters = kmeans.kmeans(microarrayData)
     
     # print out the results
-    print "\nFinal set of gene clusters:"
+    print ("\nFinal set of gene clusters:")
     for clusterIdx, cluster in enumerate(finalClusters):
-        print "\tCluster %d: %s" % (clusterIdx+1, ["gene" + str(idx+1) for gene, idx in cluster])
-    print ""
+        print ("\tCluster %d: %s" % (clusterIdx+1, ["gene" + str(idx+1) for gene, idx in cluster]))
+    print ("")
     if kmeans.numExps == 2:
         plt.show()
