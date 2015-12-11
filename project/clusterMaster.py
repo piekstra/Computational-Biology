@@ -7,6 +7,8 @@ from csvReader import CSVReader
 from k_means import KMeans
 # QT clustering
 from QT import QT
+# Hierarchical clustering
+from hierarchical import Hierarchical
 
 # Print lots of stuff
 VERBOSE = False
@@ -55,3 +57,14 @@ print ("Using QT Algorithm:")
 for clusterIdx, cluster in enumerate(qtFinalClusters):
     print ("\tCluster %d: {%s}" % (clusterIdx+1, ', '.join([str(geneNum+1) for geneNum in cluster])))
 print ("")
+
+## Hierarchical Clustering algorithm!
+
+# holds a reference to a QT object 
+hc = Hierarchical(microarrayData, VERBOSE)
+# get the clusters determined by the algorithm
+hcFinalClusters = hc.hierarchicalCluster()
+
+# print out the clusters
+print ("Using Hierarchical Clustering Algorithm:")
+print ("Tree: %s" % hcFinalClusters)
