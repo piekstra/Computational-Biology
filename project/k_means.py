@@ -5,6 +5,10 @@ import matplotlib.colors as colors
 
 ## 
 #
+# Author: Caleb Piekstra
+#
+# Last Modified: 12/11/2015
+#
 # Description: Runs the KMeans clustering algorithm
 #
 # K-means Clustering: Given N items with known distances between 
@@ -168,26 +172,45 @@ class KMeans:
         # keeps track of the number of cluster arrangements
         counter = 0
         
-        # the algorithm runs until the cluster assignments stop change
+        # the algorithm runs until the cluster assignments stop changing
         while True:
+            # keep track of the number of unique cluster arrangements
             counter += 1
+            
+            # only plot the clusters if there are 2 expressions
             if numExps == 2:
                 self.plot(clusters, counter)
+                
+            # create an empty 2D list to hold the next iteration of clusters
             newClusters = self.newClusters(len(clusters))
+            # calculate the centers of the current clusters
             centers = [self.center(list(zip(*cluster))[0]) for cluster in clusters]
+            
             if self.verbose:
                 print ("\ncluster arrangement %d:" % (counter))
                 print ("Gene%s\t%s\t cluster assignment" % (' '.join(['  ' for _ in range(2,numExps)]), '\t'.join(["sq dist to center C%d" % i for i in range(1, len(centers)+1)])))
+            
+            # loop through the microarray data
             for geneIdx, gene in enumerate(mdata):
+                # determine the distance from the gene to each cluster center
                 distancesToCenters = [self.sqDist(gene, center) for center in centers]
+                
+                # figure out which cluster to assign the gene to (minimum distance to center)
                 assignedClusterIdx = min(range(len(distancesToCenters)), key=distancesToCenters.__getitem__)
+                
+                # assign the gene to the new cluster
                 newClusters[assignedClusterIdx].append((gene, geneIdx))
+                
                 if self.verbose:
                     print ("%s\t%s\t\t\t %s" % (gene, '\t\t\t'.join(["%0.2f" % dist for dist in distancesToCenters]), ("C%d" % (assignedClusterIdx+1))))
+                    
             # remove any empty clusters
             newClusters = list(filter(None, newClusters))
+            # if the new cluster assignment is the same as the previous one
+            # then the algorithm has finished
             if newClusters == clusters:
                 return clusters
+            # otherwise loop again for new cluster assignments
             else:
                 clusters = newClusters
         
@@ -219,5 +242,7 @@ if __name__ == "__main__":
     for clusterIdx, cluster in enumerate(finalClusters):
         print ("\tCluster %d: %s" % (clusterIdx+1, ["gene" + str(idx+1) for gene, idx in cluster]))
     print ("")
+    
+    # show the plots
     if kmeans.numExps == 2:
         plt.show()
