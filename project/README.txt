@@ -1,3 +1,13 @@
+System Requirements:
+	Python 3.X
+	matplotlib python package
+	possibly numpy package
+
+To install missing packages run the following:
+	pip install matplotlib
+	pip install numpy
+Note: pip is python's package manager 
+
 To run the program, simply run clusterMaster.py using Python 3.X
 
 Example:
