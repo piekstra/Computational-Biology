@@ -47,6 +47,33 @@ class CSVReader:
         # return the microarray data in the form of a 2D list
         # where each inner list is a gene's expression data
         return microArrayData
+    
+    
+    ##    
+    # getLabels
+    #
+    # Description: Given a csv file name, opens the file
+    #   and parses out the labels
+    #
+    # Parameters:
+    #   fileName - The name of the file to read
+    #   verbose - Optional parameter to print out 
+    #       extra information
+    #
+    # Returns:
+    #   The labels
+    #
+    def getLabels(self, fileName, verbose=False):
+        # create an array to hold the labels
+        labels = []
+        
+        # open the file for reading
+        with open(fileName, 'r') as csv:
+            # return the labels (column 0)
+            labels = [line.rstrip().split(',')[0] for line in csv][1:]
+                    
+        # return the labels
+        return labels
 
 
 # Test code for directly running the file        

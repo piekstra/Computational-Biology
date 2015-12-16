@@ -160,10 +160,10 @@ class Hierarchical:
     #
     def hierarchicalCluster(self):
         while len(self.distTable) > 2:
+            lastList = self.distTable[0]
             self.mergeClusters()
-            #for i in range(len(self.distTable)):
-                #print(self.distTable[i])
-            #print("==========================================================================")
+            merge = list(set(self.distTable[0]) - set(lastList))[0]
+            print (merge)
         return self.distTable[0][0]
 
 # TESTS

@@ -154,7 +154,7 @@ class KMeans:
         # the number of genes in the microarray
         numGenes = len(mdata)
         # the number of expressions per gene
-        numExps = len(mdata[0])
+        numExps = len(mdata[0])        
         
         if self.verbose:
             print ("K-means Clustering:\n\tk = %d\n\tnum genes: %d\n\tnum expressions: %d" % (k, numGenes, numExps))
@@ -209,7 +209,7 @@ class KMeans:
             # if the new cluster assignment is the same as the previous one
             # then the algorithm has finished
             if newClusters == clusters:
-                return clusters
+                break
             # otherwise loop again for new cluster assignments
             else:
                 clusters = newClusters
@@ -218,6 +218,9 @@ class KMeans:
         # (2D plot!)
         if numExps == 2:
             plt.show()
+
+        # return the final cluster arrangement    
+        return clusters
 
 
 # Test code for directly running the file
