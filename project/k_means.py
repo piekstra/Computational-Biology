@@ -125,7 +125,7 @@ class KMeans:
         xyClusters = [list(zip(*cluster)) for cluster in refinedClusters]
         
         # get a unique set of colors to use for the clusters
-        clusterColors = colors.cnames.values()[:len(xyClusters)]
+        clusterColors = list(colors.cnames.values())[:len(xyClusters)]
         
         # create a new figure
         plt.figure(figureNum)
@@ -154,7 +154,8 @@ class KMeans:
         # the number of genes in the microarray
         numGenes = len(mdata)
         # the number of expressions per gene
-        numExps = len(mdata[0])        
+        numExps = len(mdata[0])
+        self.numExps = numExps
         
         if self.verbose:
             print ("K-means Clustering:\n\tk = %d\n\tnum genes: %d\n\tnum expressions: %d" % (k, numGenes, numExps))
